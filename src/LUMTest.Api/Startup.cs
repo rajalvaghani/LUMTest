@@ -1,3 +1,7 @@
+using LUMTest.DataAccess;
+using LUMTest.DataAccess.Interfaces;
+using LUMTest.Service;
+using LUMTest.Service.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,17 +23,23 @@ namespace LUMTest.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "LUMTest.Api", Version = "v1" });
             });
+
+            services.AddSingleton(typeof(IMaterialRepository), typeof(MaterialRepository));
+            services.AddSingleton(typeof(IMaterialService), typeof(MaterialService));
+            services.AddSingleton<IDbContext, DbContext>();
+
+            services.Configure<DatabaseSettings>(Configuration.GetSection("Database"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
