@@ -4,7 +4,16 @@ using System.Text.Json.Serialization;
 namespace LUMTest.Domain
 {
     public class Material
-    {        
+    {
+        public Material(string materialId, string name, bool isvisible, PhaseType typeOfphase, MaterialFunction materialfunction)
+        {
+            Id = materialId;
+            Name = name;
+            IsVisible = isvisible;
+            TypeOfPhase = typeOfphase;
+            MaterialFunction = materialfunction;
+        }
+
         public string Id { get; protected set; }
         public string Name { get; protected set; }
         public bool IsVisible { get; protected set; }
