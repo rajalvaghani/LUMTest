@@ -76,6 +76,21 @@ namespace LUMTest.DataAccess
             }
         }
 
+        public async Task<bool> Delete(string id)
+        {
+            try
+            {
+                using var session = _context.store.OpenAsyncSession();
+                session.Delete(id);
+                await session.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new RepositoryException(ex.Message, ex.InnerException);
+            }
+        }
+
         public async Task<bool> ElementExists(string id)
         {
             try

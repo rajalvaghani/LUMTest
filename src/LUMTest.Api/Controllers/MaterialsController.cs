@@ -101,5 +101,22 @@ namespace LUMTest.Api.Controllers
 
             return Ok(new MaterialQuery(updatedmaterial));
         }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
+        {
+            //Check Document is exists with the given id
+            var isExists = await _materialService.ElementExists(id.ToString());
+            if (!isExists)
+                return NotFound();
+
+            var deleted = await _materialService.Delete(id.ToString());
+            if (deleted)
+                return Ok();
+
+            return NotFound();
+        }
     }
 }

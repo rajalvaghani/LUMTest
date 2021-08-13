@@ -10,5 +10,6 @@ namespace LUMTest.DataAccess.Interfaces
         Task<T> Insert(T entity);
         Task<T> Update(T entity);
         Task<bool> ElementExists(string id);
+        Task<bool> Delete(string id);
     }
 }

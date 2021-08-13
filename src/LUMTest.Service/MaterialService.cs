@@ -37,5 +37,10 @@ namespace LUMTest.Service
         {
             return await _materialRepository.ElementExists(id);
         }
+
+        public async Task<bool> Delete(string id)
+        {
+            return await _materialRepository.Delete(id);
+        }
     }
 }

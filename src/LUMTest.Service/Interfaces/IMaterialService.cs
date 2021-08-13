@@ -11,5 +11,6 @@ namespace LUMTest.Service.Interfaces
         Task<Material> Insert(Material material);
         Task<Material> Update(Material material);
         Task<bool> ElementExists(string id);
+        Task<bool> Delete(string id);
     }
 }
