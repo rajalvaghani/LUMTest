@@ -12,4 +12,4 @@
 3. Build and Run the application
 
 ## Project Structure Design
-![Project Structure](https://github.com/rajalvaghani/LUMTest/tree/main/charts/project-structure.jpg)
+![Project Structure](https://github.com/rajalvaghani/LUMTest/tree/main/charts/project-structure.PNG)
